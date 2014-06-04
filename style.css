@@ -12,8 +12,12 @@ footer {
 }
 aside {
 	background: burlywood;
+	text-align: center;
 	float: left;
 	width: 9%;
+}
+nav {
+	text-align: left;
 }
 section {
 	float: right;
