@@ -6,15 +6,24 @@
 	<description>personal site of Dave Menninger</description>
 
 	<item>
+		<title>Easter Egg</title>
+		<link>http://davemenninger.com/#easteregg</link>
+		<description>there is no post on the site for this rss item, it only appears in the feed</description>
+		<pubDate>Mon, 02 Jun 2014 00:00:00 -0400</pubDate>
+	</item>
+
+	<item>
 		<title>Rebuilding</title>
 		<link>http://davemenninger.com/#rebuilding</link>
 		<description>re-writing the site from scratch</description>
+		<pubDate>Tue, 03 Jun 2014 00:00:00 -0400</pubDate>
 	</item>
 
 	<item>
 		<title>Tools</title>
 		<link>http://davemenninger.com/#tools</link>
 		<description>tools used to build the site</description>
+		<pubDate>Wed, 04 Jun 2014 00:00:00 -0400</pubDate>
 	</item>
 </channel>
 </rss>
