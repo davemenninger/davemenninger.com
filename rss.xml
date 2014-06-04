@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+	<title>DaveMenninger.com</title>
+	<link>http://davemenninger.com/</link>
+	<description>personal site of Dave Menninger</description>
+
+	<item>
+		<title>Rebuilding</title>
+		<link>http://davemenninger.com/#rebuilding</link>
+		<description>re-writing the site from scratch</description>
+	</item>
+
+	<item>
+		<title>Tools</title>
+		<link>http://davemenninger.com/#tools</link>
+		<description>tools used to build the site</description>
+	</item>
+</channel>
+</rss>
