@@ -1,3 +1,28 @@
+body {
+	background: slategray;
+	font-family: Trebuchet MS,Symbola,DejaVu sans,sans-serif;
+}
+header {
+	background: wheat;
+	text-align: center;
+}
+footer {
+	text-align: center;
+	clear: both;
+}
+aside {
+	background: burlywood;
+	float: left;
+	width: 9%;
+}
+section {
+	float: right;
+	width: 89%;
+}
 article {
-	background: lavender;
+	background: cornsilk;
+	padding-bottom: 1%;
+}
+p {
+	padding: 1%;
 }
