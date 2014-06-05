@@ -25,5 +25,12 @@
 		<description>tools used to build the site</description>
 		<pubDate>Wed, 04 Jun 2014 00:00:00 -0400</pubDate>
 	</item>
+
+	<item>
+		<title>RSS</title>
+		<link>http://davemenninger.com/#rss</link>
+		<description>writing XML by hand</description>
+		<pubDate>Thu, 05 Jun 2014 00:00:00 -0400</pubDate>
+	</item>
 </channel>
 </rss>
