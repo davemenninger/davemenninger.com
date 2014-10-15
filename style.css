@@ -14,8 +14,11 @@ aside {
 	background: burlywood;
 	text-align: center;
 	float: left;
+	font-size: 0.9em;
 	width: 9%;
+	min-width: 8em;
 	word-wrap: break-word;
+	padding: 1px;
 }
 nav {
 	text-align: left;
@@ -27,9 +30,12 @@ nav {
 	font-size: 0.75em;
 	background: wheat;
 }
+.vcard img {
+	width: 90%;
+}
 section {
 	float: right;
-	width: 89%;
+	width: 87%;
 }
 article {
 	background: cornsilk;
