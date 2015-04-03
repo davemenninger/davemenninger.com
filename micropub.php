@@ -101,6 +101,10 @@ $htmlpost =
     "<!DOCTYPE html>\n".
     "<html lang=\"en\">\n".
     "<head>\n".
+        "\t<meta charset=\"utf-8\" />\n".
+        "\t<title>".$name."</title>\n".
+        "\t<link rel=\"icon\" href=\"dave.png\" />\n".
+        "\t<link rel=\"stylesheet\" href=\"style.css\" />\n".
 	"\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS for DaveMenninger.com microposts\" href=\"micropost.xml\" />\n".
         "\t<meta property=\"og:title\" content=\"".$name."\" />\n".
         "\t<meta property=\"og:description\" content=\"".$body."\" />\n".
