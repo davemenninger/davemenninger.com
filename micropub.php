@@ -88,21 +88,66 @@ if (!isset($_POST['content'])) {
    (such as $_POST['content'], $_POST['category'], $_POST['location'], etc.)
    e.g. create a new entry, store it in a database, whatever. */
 
-$txtfile = 'microposts.txt';
-$txtpost = $_POST['content'] ;
-file_put_contents($txtfile, $txtpost."\n", FILE_APPEND | LOCK_EX);
+# munge post data here
+$name = $_POST['content'];
+$body = $_POST['content'];
+$imgurl = 'http://davemenninger.com/7867380014_2847527433_q.jpg';
 
-$asciifile = 'microposts.asciidoc';
-$asciipost =
-    "= name\n" .
-    "== content\n" .
-    $_POST['content'] . "\n" .
-    "== date\n" .
-    date('c') . "\n" .
-    "\n" ;
-file_put_contents($asciifile, $asciipost."\n", FILE_APPEND | LOCK_EX);
+# create a valid h-entry post, with open graph metadata
+# http://microformats.org/wiki/h-entry
+# http://ogp.me/
+$htmlfile = 'micropost.html';
+$htmlpost =
+    "<!DOCTYPE html>\n".
+    "<html lang=\"en\">\n".
+    "<head>\n".
+	"\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS for DaveMenninger.com microposts\" href=\"micropost.xml\" />\n".
+        "\t<meta property=\"og:title\" content=\"".$name."\" />\n".
+        "\t<meta property=\"og:description\" content=\"".$body."\" />\n".
+        "\t<meta property=\"og:type\" content=\"article\" />\n".
+        "\t<meta property=\"og:url\" content=\"http://davemenninger.com/micropost.html\" />\n".
+        "\t<meta property=\"og:image\" content=\"".$imgurl."\" />\n".
+        "\t<meta property=\"og:image:url\" content=\"".$imgurl."\" />\n".
+    "</head>\n".
+    "<body>\n".
+        "\t<article class=\"h-entry\">\n".
+            "\t\t<a class=\"u-url\" href=\"http://davemenninger.com/micropost.html\"><h1 class=\"p-name\">".$name."</h1></a>\n".
+            "\t\t<p>Published by <a class=\"p-author h-card\" href=\"http://davemenninger.com/\">Dave Menninger</a>".
+            " on <time class=\"dt-published\" datetime=\"".date('c')."\">".date('Y - m - d')."</time></p>\n".
+            "\t\t<p class=\"p-summary\">".$body."</p>\n".
+            "\t\t<div class=\"e-content\">\n".
+                "\t\t\t<img class=\"u-photo\" src=\"".$imgurl."\" />\n".
+                "\t\t\t<p>".$body."</p>\n".
+            "\t\t</div>\n".
+        "\t</article>\n".
+    "</body>\n".
+    "</html>\n";
+file_put_contents($htmlfile,$htmlpost,LOCK_EX);
+
+# create an rss feed with this item
+# http://validator.w3.org/feed/
+$rssfile = 'micropost.xml';
+$rsspost =
+    "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n".
+    "<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\" >\n".
+    "<channel>\n".
+	"\t<title>DaveMenninger.com microposts</title>\n".
+	"\t<link>http://davemenninger.com/micropost.html</link>\n".
+        "\t<atom:link href=\"http://davemenninger.com/micropost.xml\" rel=\"self\" type=\"application/rss+xml\" />\n".
+	"\t<description>linkblog of Dave Menninger</description>\n".
+	"\t<item>\n".
+		"\t<title>".$name."</title>\n".
+		"\t<link>http://davemenninger.com/micropost.html</link>\n".
+                "\t<guid>http://davemenninger.com/micropost.html#".uniqid()."</guid>\n".
+		"\t<description>".$body."</description>\n".
+		"\t<pubDate>".date('r')."</pubDate>\n".
+	"\t</item>\n".
+    "</channel>\n".
+    "</rss>\n";
+file_put_contents($rssfile,$rsspost,LOCK_EX);
+
 
 header($_SERVER['SERVER_PROTOCOL'] . ' 201 Created');
-header('Location: '.$mysite.$asciifile);
+header('Location: '.$mysite.$htmlfile);
 
 ?>
