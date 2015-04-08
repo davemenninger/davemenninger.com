@@ -140,11 +140,11 @@ $rsspost =
         "\t<atom:link href=\"http://davemenninger.com/micropost.xml\" rel=\"self\" type=\"application/rss+xml\" />\n".
 	"\t<description>linkblog of Dave Menninger</description>\n".
 	"\t<item>\n".
-		"\t<title>".$name."</title>\n".
-		"\t<link>http://davemenninger.com/micropost.html</link>\n".
-                "\t<guid>http://davemenninger.com/micropost.html#".uniqid()."</guid>\n".
-		"\t<description>".$body."</description>\n".
-		"\t<pubDate>".date('r')."</pubDate>\n".
+            "\t\t<title>".$name."</title>\n".
+            "\t\t<link>http://davemenninger.com/micropost.html</link>\n".
+            "\t\t<guid>http://davemenninger.com/micropost.html#".uniqid()."</guid>\n".
+            "\t\t<description>".$body."</description>\n".
+            "\t\t<pubDate>".date('r')."</pubDate>\n".
 	"\t</item>\n".
     "</channel>\n".
     "</rss>\n";
