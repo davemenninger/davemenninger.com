@@ -89,8 +89,23 @@ if (!isset($_POST['content'])) {
    e.g. create a new entry, store it in a database, whatever. */
 
 # munge post data here
-$name = $_POST['content'];
+$name = 'default post title';
+if ( isset($_POST['title']) ) {
+    $name = $_POST['title'];
+} else {
+    $name = $_POST['content'];
+}
+# linkify urls
+# http://buildinternet.com/2010/05/how-to-automatically-linkify-text-with-php-regular-expressions/
+function link_it($text)
+{
+    $text= preg_replace("/(^|[\n ])([\w]*?)((ht|f)tp(s)?:\/\/[\w]+[^ \,\"\n\r\t<]*)/is", "$1$2<a href=\"$3\" >$3</a>", $text);
+    $text= preg_replace("/(^|[\n ])([\w]*?)((www|ftp)\.[^ \,\"\t\n\r<]*)/is", "$1$2<a href=\"http://$3\" >$3</a>", $text);
+    $text= preg_replace("/(^|[\n ])([a-z0-9&\-_\.]+?)@([\w\-]+\.([\w\-\.]+)+)/i", "$1<a href=\"mailto:$2@$3\">$2@$3</a>", $text);
+    return($text);
+}
 $body = $_POST['content'];
+$htmlbody = link_it($_POST['content']);
 $imgurl = 'http://davemenninger.com/7867380014_2847527433_q.jpg';
 
 # create a valid h-entry post, with open graph metadata
@@ -117,11 +132,11 @@ $htmlpost =
         "\t<article class=\"h-entry\">\n".
             "\t\t<a class=\"u-url\" href=\"http://davemenninger.com/micropost.html\"><h1 class=\"p-name\">".$name."</h1></a>\n".
             "\t\t<p>Published by <a class=\"p-author h-card\" href=\"http://davemenninger.com/\">Dave Menninger</a>".
-            " on <time class=\"dt-published\" datetime=\"".date('c')."\">".date('Y - m - d')."</time></p>\n".
-            "\t\t<p class=\"p-summary\">".$body."</p>\n".
+            " on <time class=\"dt-published\" datetime=\"".date('c')."\">".date('Y-m-d')."</time></p>\n".
+            "\t\t<p class=\"p-summary\">".$htmlbody."</p>\n".
             "\t\t<div class=\"e-content\">\n".
                 "\t\t\t<img class=\"u-photo\" src=\"".$imgurl."\" />\n".
-                "\t\t\t<p>".$body."</p>\n".
+                "\t\t\t<p>".$htmlbody."</p>\n".
             "\t\t</div>\n".
         "\t</article>\n".
     "</body>\n".
