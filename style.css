@@ -1,17 +1,19 @@
 body {
-	background: slategray;
-	font-family: "Trebuchet MS",Symbola,"DejaVu sans",sans-serif;
+	background: snow;
+	font-family: Palatino,"Palatino Linotype",serif;
+	font-size: 18px;
+	line-height: 25px;
 }
 header {
-	background: wheat;
-	text-align: center;
+	background: snow;
+	padding: 1%;
 }
 footer {
 	text-align: center;
 	clear: both;
 }
 aside {
-	background: burlywood;
+	background: snow;
 	text-align: center;
 	float: left;
 	font-size: 0.9em;
@@ -24,11 +26,11 @@ nav {
 	text-align: left;
 }
 .vcard {
-	/*border: solid;*/
-	/*border-width: 1px;*/
+	border: solid;
+	border-width: 1px;
 	margin: 1px;
 	font-size: 0.75em;
-	background: wheat;
+	background: snow;
 }
 .vcard img {
 	width: 90%;
@@ -38,9 +40,12 @@ section {
 	width: 87%;
 }
 article {
-	background: cornsilk;
+	background: snow;
 	padding-bottom: 1%;
 }
 p {
 	padding: 1%;
+}
+h2 a{
+	color: black;
 }
