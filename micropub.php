@@ -157,7 +157,7 @@ $rsspost =
 	"\t<description>linkblog of Dave Menninger</description>\n".
 	"\t<item>\n".
             "\t\t<title>".$name."</title>\n".
-            "\t\t<link>http://davemenninger.com/micropost.html</link>\n".
+            "\t\t<link>http://davemenninger.com/micropost.html#".uniqid()."</link>\n".
             "\t\t<guid>http://davemenninger.com/micropost.html#".uniqid()."</guid>\n".
             "\t\t<description>".$body."</description>\n".
             "\t\t<pubDate>".date('r')."</pubDate>\n".
