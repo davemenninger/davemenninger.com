@@ -106,7 +106,8 @@ function link_it($text)
 }
 $body = $_POST['content'];
 $htmlbody = link_it($_POST['content']);
-$imgurl = 'http://davemenninger.com/7867380014_2847527433_q.jpg';
+$imgurl = 'http://davemenninger.com/dave.png';
+$summary = "this is a micropost";
 
 # create a valid h-entry post, with open graph metadata
 # http://microformats.org/wiki/h-entry
@@ -130,10 +131,10 @@ $htmlpost =
     "</head>\n".
     "<body>\n".
         "\t<article class=\"h-entry\">\n".
-            "\t\t<a class=\"u-url\" href=\"http://davemenninger.com/micropost.html\"><h1 class=\"p-name\">".$name."</h1></a>\n".
+            "\t\t<h2 class=\"p-name\"><a class=\"u-url\" href=\"http://davemenninger.com/micropost.html\">".$name."</a></h2>\n".
             "\t\t<p>Published by <a class=\"p-author h-card\" href=\"http://davemenninger.com/\">Dave Menninger</a>".
             " on <time class=\"dt-published\" datetime=\"".date('c')."\">".date('Y-m-d')."</time></p>\n".
-            "\t\t<p class=\"p-summary\">".$htmlbody."</p>\n".
+            "\t\t<p class=\"p-summary\">SUMMARY: ".$summary."</p>\n".
             "\t\t<div class=\"e-content\">\n".
                 "\t\t\t<img class=\"u-photo\" src=\"".$imgurl."\" />\n".
                 "\t\t\t<p>".$htmlbody."</p>\n".
