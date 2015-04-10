@@ -1,0 +1,71 @@
+{
+    "posts": [
+        {
+            "mp-action": "create",
+            "mp-type": "note",
+            "title": "a title",
+            "slug": "a-slug-would-go-here",
+            "content": "this is the body of the post",
+            "in-reply-to": "http:\/\/example.com\/a-reply-to-url-would-go-here",
+            "like-of": "",
+            "bookmark": "",
+            "name": "",
+            "rsvp": "yes",
+            "category": "myawesomecategory",
+            "syndication": "http:\/\/example.com\/link-to-syndicated-copy",
+            "place_name": "Cincinnati, OH",
+            "location": "geo:39.105252799999995,-84.5129919",
+            "h": "entry",
+            "pubDate": "Fri, 10 Apr 2015 12:07:55 -0700"
+        },
+        {
+            "mp-action": "create",
+            "mp-type": "article",
+            "title": "test draft",
+            "slug": "a_sample_draft_article",
+            "content": "<p>what happens if this is marked as a draft?<\/p>\r\n",
+            "in-reply-to": "",
+            "like-of": "",
+            "bookmark": "",
+            "name": "",
+            "rsvp": "yes",
+            "category": "",
+            "syndication": "",
+            "place_name": "",
+            "location": "",
+            "draft": "1",
+            "h": "entry",
+            "pubDate": "Fri, 10 Apr 2015 12:08:46 -0700"
+        },
+        {
+            "mp-action": "create",
+            "mp-type": "note",
+            "title": "test note",
+            "slug": "a_sample_note",
+            "content": "this is a note body.\r\n",
+            "in-reply-to": "https:\/\/ben.thatmustbe.me\/new",
+            "like-of": "",
+            "bookmark": "",
+            "name": "",
+            "rsvp": "yes",
+            "category": "",
+            "syndication": "",
+            "place_name": "",
+            "location": "",
+            "draft": "1",
+            "h": "entry",
+            "pubDate": "Fri, 10 Apr 2015 12:09:42 -0700"
+        },
+        {
+            "h": "entry",
+            "content": "another test post",
+            "in-reply-to": "https:\/\/quill.p3k.io\/new",
+            "pubDate": "Fri, 10 Apr 2015 12:10:07 -0700"
+        },
+        {
+            "h": "entry",
+            "content": "here is a post with some \"quotes\" and some \/slashes\/ in it.",
+            "pubDate": "Fri, 10 Apr 2015 12:11:35 -0700"
+        }
+    ]
+}

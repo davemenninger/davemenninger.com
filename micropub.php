@@ -95,6 +95,7 @@ if ( isset($_POST['title']) ) {
 } else {
     $name = $_POST['content'];
 }
+
 # linkify urls
 # http://buildinternet.com/2010/05/how-to-automatically-linkify-text-with-php-regular-expressions/
 function link_it($text)
@@ -108,6 +109,14 @@ $body = $_POST['content'];
 $htmlbody = link_it($_POST['content']);
 $imgurl = 'http://davemenninger.com/dave.png';
 $summary = "this is a micropost";
+
+# store posts in a json file
+$jsonfile = 'microposts.json';
+$p = $_POST;
+$p['pubDate'] = date('r');
+$j = json_decode( file_get_contents($jsonfile), true );
+$j['posts'][] = $p;
+file_put_contents( $jsonfile, json_encode( $j, JSON_PRETTY_PRINT ) );
 
 # create a valid h-entry post, with open graph metadata
 # http://microformats.org/wiki/h-entry
