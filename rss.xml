@@ -54,5 +54,13 @@
 		<pubDate>Tue, 14 Oct 2014 00:00:00 -0400</pubDate>
 	</item>
 
+	<item>
+		<title>Micropub</title>
+		<link>http://davemenninger.com/#micropub</link>
+		<description>creating a micropub endpoint</description>
+		<pubDate>Fri, 10 Apr 2015 00:00:00 -0400</pubDate>
+	</item>
+
+
 </channel>
 </rss>

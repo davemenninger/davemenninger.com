@@ -24,6 +24,17 @@
 			</div>
 		</article>
 	-->
+
+		<article class="h-entry">
+			<h2 class="p-name" id="micropub"><a class="u-url" href="#micropub" rel="bookmark" title="link to this post">Micropub</a></h2>
+			<time class="dt-published" datetime="2015-04-10">April 10, 2015</time>
+			<div class="e-content">
+				<p>I've been reading up on <a href="https://indiewebcamp.com/">IndieWeb</a> ideas and trying to implement them on my own site.  One idea in particular was interesting enough to me to make me break my 'no scripting' rule.  <a href="https://indiewebcamp.com/Micropub">Micropub</a> is a standard for creating posts on your own site, using third-party clients.  The idea is that you use IndieAuth to authenticate to your own domain, then your site accepts a POST with form-encoded values and creats a note, article, or whatever, in whatever format you want.  Separating the client implementation from the server implementation has some advantages.</p>
+				<p>I'm attempting to use it in a particular way on my site, which means I need to write some code.  I've always wanted to create a linkblog like Andy Baio's at <a href="http://waxy.org/links/">Waxy.org</a>.  I currently use <a href="https://buffer.com/">Buffer</a> to post links and they get posted to Twitter and then to Facebook.  Buffer is really nice, but the big downside is that I don't have a nice archive on my own site of what I've posted.  So I'd like to use Micropub to post links to my own site and then <a href="https://indiewebcamp.com/POSSE">POSSE</a> them elsewhere.</p>
+				<p>The steps to accomplish this are several.  First, I need a micropub endpoint here so I can post here from other clients.  That's what I have now.  I've used Jeremy Keith's <a href="https://gist.github.com/adactio/8168e6b78da7b16a4644">PHP code</a> to accept micropub posts and store them to <a href="./microposts.json">a file</a> locally.  I am still figuring out whether storing the posts locally in JSON is the best option.  I thought it would be easier to render from JSON to HTML, but after reading <a href="http://www.kevinmarks.com/we-like-indieweb-software.html">this</a>, I'm not sure.</p>
+				<p>Once I have that figured out, I may attempt to write some micropub clients.  In order to abandon Buffer, I'll need a Chrome extension and a native Android app.  There are some things out there, but I have some ideas I want to add.</p>
+			</div>
+		</article>
 		<article class="h-entry">
 			<header>
 				<h2 class="p-name" id="how-i-get-news"><a class="u-url" href="#how-i-get-news" rel="bookmark" title="link to this post">How I Get News</a></h2>
