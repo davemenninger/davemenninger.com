@@ -110,73 +110,95 @@ $htmlbody = link_it($_POST['content']);
 $imgurl = 'http://davemenninger.com/dave.png';
 $summary = "this is a micropost";
 
-# store posts in a json file
+# posts are stored in a json file
 $jsonfile = 'microposts.json';
+
+# the new post data is just everything from the POST plus a unix timestamp
 $p = $_POST;
-$p['pubDate'] = date('r');
+$p['pubTime'] = date('U');
+
+# load the existing posts and push the new one
 $j = json_decode( file_get_contents($jsonfile), true );
 $j['posts'][] = $p;
+
+# sort in reverse chronological order
+usort($j['posts'], function($a,$b){ return $b['pubTime'] - $a['pubTime']; } );
+
+# output JSON back to filesystem
 file_put_contents( $jsonfile, json_encode( $j, JSON_PRETTY_PRINT ) );
 
-# create a valid h-entry post, with open graph metadata
+# create an HTML page with the posts loaded from json
+# the OGP metadata is of the top ( newest ) post
 # http://microformats.org/wiki/h-entry
 # http://ogp.me/
+# and
+# create an rss feed of items loaded from json
+# http://validator.w3.org/feed/
+$rssfile = 'micropost.xml';
 $htmlfile = 'micropost.html';
-$htmlpost =
-    "<!DOCTYPE html>\n".
+$feedtitle = 'DaveMenninger.com microposts';
+$feeddesc = 'linkblog of Dave Menninger';
+
+
+$rss = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n".
+    "<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\" >\n".
+    "<channel>\n".
+	"\t<title>".$feedtitle."</title>\n".
+	"\t<link>".$mysite.$htmlfile."</link>\n".
+        "\t<atom:link href=\"".$mysite.$rssfile."\" rel=\"self\" type=\"application/rss+xml\" />\n".
+        "\t<description>".$feeddesc."</description>\n";
+
+$html = "<!DOCTYPE html>\n".
     "<html lang=\"en\">\n".
     "<head>\n".
         "\t<meta charset=\"utf-8\" />\n".
         "\t<title>".$name."</title>\n".
         "\t<link rel=\"icon\" href=\"dave.png\" />\n".
         "\t<link rel=\"stylesheet\" href=\"style.css\" />\n".
-	"\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS for DaveMenninger.com microposts\" href=\"micropost.xml\" />\n".
+	"\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS for ".$feedtitle."\" href=\"".$rssfile."\" />\n".
         "\t<meta property=\"og:title\" content=\"".$name."\" />\n".
         "\t<meta property=\"og:description\" content=\"".$body."\" />\n".
         "\t<meta property=\"og:type\" content=\"article\" />\n".
-        "\t<meta property=\"og:url\" content=\"http://davemenninger.com/micropost.html\" />\n".
+        "\t<meta property=\"og:url\" content=\"".$mysite.$htmlfile."\" />\n".
         "\t<meta property=\"og:image\" content=\"".$imgurl."\" />\n".
         "\t<meta property=\"og:image:url\" content=\"".$imgurl."\" />\n".
     "</head>\n".
-    "<body>\n".
-        "\t<article class=\"h-entry\">\n".
-            "\t\t<h2 class=\"p-name\"><a class=\"u-url\" href=\"http://davemenninger.com/micropost.html\">".$name."</a></h2>\n".
-            "\t\t<p>Published by <a class=\"p-author h-card\" href=\"http://davemenninger.com/\">Dave Menninger</a>".
-            " on <time class=\"dt-published\" datetime=\"".date('c')."\">".date('Y-m-d')."</time></p>\n".
-            "\t\t<p class=\"p-summary\">SUMMARY: ".$summary."</p>\n".
+    "<body>\n";
+
+foreach( $j['posts'] as $i ) {
+    # build one article for each post
+    $html .=
+        "\t<article class=\"h-entry\" id=\"".$i['pubTime']."\">\n".
+            "\t\t<h2 class=\"p-name\"><a class=\"u-url\" href=\"".$mysite.$htmlfile."#".$i['pubTime']."\">".$i['title']."</a></h2>\n".
+            "\t\t<h4>".date('r',$i['pubTime'])."</h4>\n".
             "\t\t<div class=\"e-content\">\n".
-                "\t\t\t<img class=\"u-photo\" src=\"".$imgurl."\" />\n".
-                "\t\t\t<p>".$htmlbody."</p>\n".
+            "\t\t\t<p>".$i['content']."</p>\n".
             "\t\t</div>\n".
-        "\t</article>\n".
-    "</body>\n".
-    "</html>\n";
-file_put_contents($htmlfile,$htmlpost,LOCK_EX);
+        "\t</article>\n";
 
-# create an rss feed with this item
-# http://validator.w3.org/feed/
-$rssfile = 'micropost.xml';
-$rsspost =
-    "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n".
-    "<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\" >\n".
-    "<channel>\n".
-	"\t<title>DaveMenninger.com microposts</title>\n".
-	"\t<link>http://davemenninger.com/micropost.html</link>\n".
-        "\t<atom:link href=\"http://davemenninger.com/micropost.xml\" rel=\"self\" type=\"application/rss+xml\" />\n".
-	"\t<description>linkblog of Dave Menninger</description>\n".
-	"\t<item>\n".
-            "\t\t<title>".$name."</title>\n".
-            "\t\t<link>http://davemenninger.com/micropost.html#".uniqid()."</link>\n".
-            "\t\t<guid>http://davemenninger.com/micropost.html#".uniqid()."</guid>\n".
-            "\t\t<description>".$body."</description>\n".
-            "\t\t<pubDate>".date('r')."</pubDate>\n".
-	"\t</item>\n".
-    "</channel>\n".
-    "</rss>\n";
-file_put_contents($rssfile,$rsspost,LOCK_EX);
+    # build one item for each post
+    $rss .= "\t<item>\n";
+    if( $i['title'] != '' ) {
+        $rss .= "\t\t<title>".$i['title']."</title>\n";
+    }
+    $rss .=
+            "\t\t<link>".$mysite.$htmlfile."#".$i['pubTime']."</link>\n".
+            "\t\t<guid>".$mysite.$htmlfile."#".$i['pubTime']."</guid>\n".
+            "\t\t<description><![CDATA[".$i['content']."]]></description>\n".
+            "\t\t<pubDate>".date('r',$i['pubTime'])."</pubDate>\n".
+        "\t</item>\n";
+}
 
+#close up the HTML file and write it out
+$html .= "</body>\n</html>\n";
+file_put_contents($htmlfile,$html,LOCK_EX);
 
+#close up the RSS file and write it out
+$rss .= "</channel>\n</rss>\n";
+file_put_contents($rssfile,$rss,LOCK_EX);
+
+# send the success response back to the client
 header($_SERVER['SERVER_PROTOCOL'] . ' 201 Created');
-header('Location: '.$mysite.$htmlfile);
+header('Location: '.$mysite.$htmlfile.'#'.$p['pubTime']);
 
 ?>
