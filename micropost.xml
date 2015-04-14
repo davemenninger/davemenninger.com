@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" >
+<channel>
+	<title>DaveMenninger.com microposts</title>
+	<link>http://davemenninger.com/micropost.html</link>
+	<atom:link href="http://davemenninger.com/micropost.xml" rel="self" type="application/rss+xml" />
+	<description>linkblog of Dave Menninger</description>
+	<item>
+		<link>http://davemenninger.com/micropost.html#1429038022</link>
+		<guid>http://davemenninger.com/micropost.html#1429038022</guid>
+		<description><![CDATA[testing 1, 2, 3...]]></description>
+		<pubDate>Tue, 14 Apr 2015 12:00:22 -0700</pubDate>
+	</item>
+	<item>
+		<link>http://davemenninger.com/micropost.html#1429037907</link>
+		<guid>http://davemenninger.com/micropost.html#1429037907</guid>
+		<description><![CDATA[this is a post from quill]]></description>
+		<pubDate>Tue, 14 Apr 2015 11:58:27 -0700</pubDate>
+	</item>
+	<item>
+		<title>this is a post from postly</title>
+		<link>http://davemenninger.com/micropost.html#1429037866</link>
+		<guid>http://davemenninger.com/micropost.html#1429037866</guid>
+		<description><![CDATA[blah blah blah]]></description>
+		<pubDate>Tue, 14 Apr 2015 11:57:46 -0700</pubDate>
+	</item>
+	<item>
+		<title>dfasdfasdf</title>
+		<link>http://davemenninger.com/micropost.html#1429034492</link>
+		<guid>http://davemenninger.com/micropost.html#1429034492</guid>
+		<description><![CDATA[asdfasdfa]]></description>
+		<pubDate>Tue, 14 Apr 2015 11:01:32 -0700</pubDate>
+	</item>
+</channel>
+</rss>
