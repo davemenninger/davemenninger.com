@@ -1,0 +1,9 @@
+# davemenninger . com
+
+This is the repo of my personal homepage: http://davemenninger.com/
+
+This readme file is mainly here because I like how it looks on GitHub.
+
+This is a static-ish site, but there is a PHP script I'm working on that allows me to post using the link:https://indiewebcamp.com/Micropub[Micropub] standard.  I've taken and modified the link:https://gist.github.com/adactio/8168e6b78da7b16a4644[code I found by Jeremy Keith].
+
+
