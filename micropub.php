@@ -134,8 +134,8 @@ file_put_contents( $jsonfile, json_encode( $j, JSON_PRETTY_PRINT ) );
 # and
 # create an rss feed of items loaded from json
 # http://validator.w3.org/feed/
-$rssfile = 'micropost.xml';
-$htmlfile = 'micropost.html';
+$rssfile = 'microposts.xml';
+$htmlfile = 'microposts.html';
 $feedtitle = 'DaveMenninger.com microposts';
 $feeddesc = 'linkblog of Dave Menninger';
 

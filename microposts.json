@@ -2,6 +2,11 @@
     "posts": [
         {
             "h": "entry",
+            "content": "foo",
+            "pubTime": "1429728952"
+        },
+        {
+            "h": "entry",
             "content": "testing 1, 2, 3...",
             "pubTime": "1429038022"
         },
