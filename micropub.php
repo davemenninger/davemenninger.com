@@ -163,7 +163,8 @@ $html = "<!DOCTYPE html>\n".
         "\t<meta property=\"og:image\" content=\"".$imgurl."\" />\n".
         "\t<meta property=\"og:image:url\" content=\"".$imgurl."\" />\n".
     "</head>\n".
-    "<body>\n";
+    "<body>\n".
+    "<h1><a href=\"http://davemenninger.com\">davemenninger.com -> home</a></h1>";
 
 foreach( $j['posts'] as $i ) {
     # build one article for each post

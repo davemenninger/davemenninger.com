@@ -6,6 +6,18 @@
 	<atom:link href="http://davemenninger.com/microposts.xml" rel="self" type="application/rss+xml" />
 	<description>linkblog of Dave Menninger</description>
 	<item>
+		<link>http://davemenninger.com/microposts.html#1430514256</link>
+		<guid>http://davemenninger.com/microposts.html#1430514256</guid>
+		<description><![CDATA[test]]></description>
+		<pubDate>Fri, 01 May 2015 14:04:16 -0700</pubDate>
+	</item>
+	<item>
+		<link>http://davemenninger.com/microposts.html#1430514210</link>
+		<guid>http://davemenninger.com/microposts.html#1430514210</guid>
+		<description><![CDATA[test]]></description>
+		<pubDate>Fri, 01 May 2015 14:03:30 -0700</pubDate>
+	</item>
+	<item>
 		<link>http://davemenninger.com/microposts.html#1429728952</link>
 		<guid>http://davemenninger.com/microposts.html#1429728952</guid>
 		<description><![CDATA[foo]]></description>
